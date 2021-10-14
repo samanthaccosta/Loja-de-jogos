@@ -30,9 +30,9 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuarioService.listaUsuarios());
 	}
 	@PostMapping("/logar")
-	public ResponseEntity<UsuarioLogin> loginUsuario(@RequestBody Optional <UsuarioLogin> usuarioLogin){
+	public ResponseEntity<UsuarioLogin>login(@RequestBody Optional <UsuarioLogin> usuarioLogin){
 		return usuarioService.loginUsuario(usuarioLogin)
-				.map(resp -> ResponseEntity.status(HttpStatus.OK).body(resp))
+				.map(respLogin -> ResponseEntity.status(HttpStatus.OK).body(respLogin))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());}
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Usuario> postUsuario(@RequestBody Usuario usuario){
